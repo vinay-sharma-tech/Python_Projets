@@ -1,0 +1,28 @@
+Project Overview -
+The BMI Calculator is a simple Python project that calculates a person's Body Mass Index (BMI) based on their height and weight.
+BMI is a widely used measurement to determine whether a person has a healthy body weight.
+This project takes user input, performs the BMI calculation, and classifies the result into categories such as Underweight, Normal weight, Overweight, or Obese.
+This project is useful for beginners learning Python basics, user input, conditional statements, and mathematical calculations.
+
+-- code ->
+
+name = input("Enter you name: ")
+weight = int(input("Enter your weight in pounds: "))
+height = int(input("Enter your height in inches: "))
+BMI = (weight * 703) / (height * height)
+print(BMI)
+if BMI>0:
+    if(BMI<18.5):
+        print(name +", you are underwight.")
+    elif (BMI<=24.9):
+        print(name +", you are normal weight.")
+    elif (BMI<29.9):
+        print(name +", you are overweight.")
+    elif (BMI<34.9):
+        print(name +", you are obese.")
+    elif (BMI<39.9):
+        print(name +", you are severely obese.")
+    else:
+        print(name +", you are morbidly obese.")
+else:
+    print("Enter valid input")
