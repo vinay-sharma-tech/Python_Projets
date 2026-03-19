@@ -1,0 +1,43 @@
+Project Title
+
+Books Price and Rating Web Scraper using Python
+
+Project Description
+
+This project uses Python to scrape book information from a website and store the data in a CSV file for further analysis.
+The scraper collects details such as book title, price, availability, and rating from an online bookstore.
+
+The project demonstrates how to send HTTP requests, parse HTML content, and extract structured data using Python libraries.
+
+
+Python Web Scraping Code -> 
+import requests
+from bs4 import BeautifulSoup
+import csv
+
+url = "http://books.toscrape.com/"
+
+response = requests.get(url)
+
+soup = BeautifulSoup(response.text, "html.parser")
+
+books = soup.find_all("article", class_="product_pod")
+
+with open("books_data.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Title", "Price", "Rating"])
+
+    for book in books:
+        title = book.h3.a["title"]
+        price = book.find("p", class_="price_color").text
+        rating = book.p["class"][1]
+
+        writer.writerow([title, price, rating])
+
+print("Data Scraped Successfully!")
+
+
+
+
+
+
